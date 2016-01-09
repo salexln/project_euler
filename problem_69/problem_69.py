@@ -46,7 +46,7 @@ def phi(num):
 max = 0.0
 max_n = 2
 for x in xrange(2, 1000000):			
-	print x
+	# print x
 	temp = float(x) / float(phi(x)) 
 	# print temp
 	if(temp > max):
