@@ -78,3 +78,14 @@ def choose(n, p):
 		return -1
 	val = factorial(n) / (factorial(p) * factorial(n-p))
 	return val
+
+def get_digits(num):
+	ll = [int(i) for i in str(num)]
+	return ll
+
+def create_num_from_list(ll):
+	num = 0
+	for x in ll:
+		num *= 10
+		num += x
+	return num
