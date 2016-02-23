@@ -1,32 +1,52 @@
-import math
+# coding=utf-8
 
-def create_num_from_last_digits(num):
-	ll = [int(i) for i in str(num)]	
-	if len(ll) <= 11:
-		return num
+"""
+calulate (28433 × 2^7830457 + 1) mod C
 
-	# print ll
-	# ll = ll[::-1]
-	# print num
-	new_num = 0
-	# print ll
-	# print num
-	for x in xrange(len(ll) - 11, len(ll)):		
-		# print x
-		# print ll[x]
-		new_num *= 10
-		new_num += ll[x]
-	# print new_num
-	return new_num
+Phase 1:
+	(A * B) mod C = (A mod C * B mod C) mod C
 
-# print create_num_from_last_digits(4294967296)
+	(28433 × 2^7830457 mod C = ((28433 mod C) * (2^7830457 mod C) ) mod C
 
-num = 2 * 28433
-for x in xrange(1, 7830457 + 1):
-	# print num
-	temp = int(math.pow(num, 2))	
-	num = create_num_from_last_digits(temp)
+Phase 2:
+	(A + B) mod C = (A mod C + B mod C) mod C
+
+	(28433 × 2^7830457 + 1) mod C  = ((28433 × 2^7830457 mod C) + (1 mod C ) ) mod C
+
+	=> Phase1 + (1 mod C ) ) mod C
+
+"""
 
 
-print num + 1
-# print 28433 * num + 1
+MOD = 1e10
+
+def phase1():
+	"""
+	calc: ((28433 × 2^7830457 mod 1e10) + (1 mod 1e10 ) ) mod 1e10	
+	"""	
+
+	# calc: 2^7830457
+	a = 2
+	exp = 7830457
+
+	res = 1
+	while exp > 0:
+		if exp % 2 == 1:
+			res = (res * a) % MOD
+		exp = exp >> 1
+		a = (a*a) % MOD
+
+	res2 = (28433 * res) % MOD
+	return res2
+
+def phase2(num):
+	ret = num + (1 % MOD ) % MOD
+	return ret
+
+
+print 'running'
+a = phase1()
+print a
+b = phase2(a)
+
+print b

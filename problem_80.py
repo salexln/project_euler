@@ -6,9 +6,8 @@ import decimal
 total_sum = 0
 for y in xrange(1,101):
 	
-	a,b = divmod(math.sqrt(y),1)
-	# print a,b
-	if b == 0.0:
+	s = math.sqrt(y)
+	if s == int(s):
 		continue
 	
 	d2 = decimal.Decimal(y)
