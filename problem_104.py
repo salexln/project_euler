@@ -57,7 +57,7 @@ while not found:
 	prev = curr
 
 	if check_9_last_pandigital(last_curr):
-		print count
+		# print count
 		if check_9_first_pandigital(curr):
 			found = True
 
