@@ -1,35 +1,33 @@
 import math
-
-def get_triangle_num(num):
-	sum = 0
-	for x in xrange(1,num):
-		sum += x
-	return sum
-
-def count_devidors(num):
-	div = 1 #including itself
-	temp = 1
-	while temp < num/2 + 1:
-		if num % temp == 0:
-			# print temp
-			div += 1
-		temp += 1
-	return div
+from utils import euler_utils
+import sympy
 
 
+def triangular_num(num):
+	ret  = int(num * (num + 1) / 2)
+	return ret
 
-# print count_devidors(28)
-x = 1
-max = 0
-while True:
-	temp = get_triangle_num(x)		
-	div = count_devidors(temp)
-	if div > max:
-		max = div
-	print max
-	# print x, temp, div
-	# print temp, count_devidors(temp)
-	if(div > 500):
-		print temp
+
+def find_divisors(num):
+	i = 1;
+	div_count = 1
+	
+	factors = sympy.ntheory.factor_.factorint(num)		
+	
+	for f in factors:
+		div_count *= (factors[f] + 1)
+
+	if div_count > 500:
+		return True
+	return False
+
+
+num = 1
+while True:		
+	tri_num = triangular_num(num)
+
+	
+	if find_divisors(tri_num):
+		print tri_num
 		break
-	x += 1
+	num += 1

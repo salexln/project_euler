@@ -48,6 +48,7 @@ def phi(num):
 	return temp*num
 
 
+
 def is_permutation(a, b):
 	ll = [int(i) for i in str(a)]	
 	s = set()
