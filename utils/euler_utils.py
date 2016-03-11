@@ -1,5 +1,7 @@
 import math
 from fractions import gcd
+import sympy
+
 
 def is_polyndrom(num):
 	ll = [int(i) for i in str(num)]	
@@ -47,8 +49,6 @@ def phi(num):
 
 	return temp*num
 
-
-
 def is_permutation(a, b):
 	ll = [int(i) for i in str(a)]	
 	s = set()
@@ -90,3 +90,16 @@ def create_num_from_list(ll):
 		num *= 10
 		num += x
 	return num
+
+
+
+def find_num_of_divisors(num):
+	i = 1;
+	div_count = 1
+	
+	factors = sympy.ntheory.factor_.factorint(num)		
+	
+	for f in factors:
+		div_count *= (factors[f] + 1)
+
+	return div_count	

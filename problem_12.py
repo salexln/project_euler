@@ -1,6 +1,5 @@
 import math
 from utils import euler_utils
-import sympy
 
 
 def triangular_num(num):
@@ -9,13 +8,7 @@ def triangular_num(num):
 
 
 def find_divisors(num):
-	i = 1;
-	div_count = 1
-	
-	factors = sympy.ntheory.factor_.factorint(num)		
-	
-	for f in factors:
-		div_count *= (factors[f] + 1)
+	div_count = euler_utils.find_num_of_divisors(num)
 
 	if div_count > 500:
 		return True
