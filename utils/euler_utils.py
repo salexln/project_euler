@@ -103,3 +103,7 @@ def find_num_of_divisors(num):
 		div_count *= (factors[f] + 1)
 
 	return div_count	
+
+
+def get_dividors(num):
+	return sympy.divisors(num)

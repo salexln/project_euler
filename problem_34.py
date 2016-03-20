@@ -15,12 +15,13 @@ def digit_factorial(num):
 		sum += factorial(x)
 	if sum == num:
 		return True
+	# if sum > num:
+	# 	exit(0)
 	return False
 
 
 sum = 0
-for x in xrange(3,10000000):
-	print x
+for x in xrange(3,20000000):	
 	if digit_factorial(x):
 		print x
 		sum += x
