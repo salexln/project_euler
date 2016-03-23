@@ -104,6 +104,14 @@ def find_num_of_divisors(num):
 
 	return div_count	
 
+"""
+returne the factors without the powers:
+i.e 12 => 2,3
+"""
+def get_factors(num):
+	factors = sympy.ntheory.factor_.factorint(num)		
+	return factors.keys
+	
 
 def get_dividors(num):
 	return sympy.divisors(num)
